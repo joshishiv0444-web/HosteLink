@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>HosteLink | Lost & Found</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<button class="menu-toggle" id="menuToggle">☰</button>
+<div class="menu-backdrop" id="menuBackdrop"></div>
+
+<nav class="sidebar" id="sidebar">
+  <h2>HosteLink</h2>
+
+  <!-- Student only -->
+  <a href="student.html" data-role="student">Dashboard</a>
+  <a href="report-issue.html" data-role="student">Report Issue</a>
+  <a href="my-issues.html" data-role="student">My Issues</a>
+  <a href="lost-found.html" data-role="student">Lost & Found</a>
+  <!-- Shared -->
+  <a href="published-reports.html" data-role="student management">
+    Published Reports
+  </a>
+  <a href="announcements.html" data-role="student management">Announcements</a>
+
+  <!-- Management only -->
+  <a href="admin.html" data-role="management">Admin Dashboard</a>
+  
+
+  <button id="logoutBtn">Logout</button>
+</nav>
+
+
+<main>
+  <h1>Lost & Found</h1>
+
+  <!-- REPORT FORMS -->
+  <div class="cards">
+
+    <!-- LOST -->
+    <div class="card">
+      <h3>Report Lost Item</h3>
+
+      <input
+        id="lostItemName"
+        placeholder="Item name (e.g. Wallet)"
+      >
+
+      <input
+        id="lostLocation"
+        placeholder="Last seen location"
+      >
+
+      <textarea
+        id="lostDesc"
+        placeholder="Description (color, brand, etc.)"
+      ></textarea>
+
+      <input
+        id="lostImage"
+        type="file"
+        accept="image/*"
+      >
+
+      <button id="lostBtn">Submit Lost Item</button>
+    </div>
+
+    <!-- FOUND -->
+    <div class="card">
+      <h3>Report Found Item</h3>
+
+      <input
+        id="foundItemName"
+        placeholder="Item name"
+      >
+
+      <input
+        id="foundLocation"
+        placeholder="Found location"
+      >
+
+      <textarea
+        id="foundDesc"
+        placeholder="Description"
+      ></textarea>
+
+      <input
+        id="foundImage"
+        type="file"
+        accept="image/*"
+      >
+
+      <button id="foundBtn">Submit Found Item</button>
+    </div>
+
+  </div>
+
+  <!-- RECENT ITEMS -->
+  <section class="glass-card">
+    <h3>Recent Lost or Found Items</h3>
+    <div id="itemsList"></div>
+  </section>
+</main>
+
+<!-- JS -->
+<script type="module" src="js/guard.js"></script>
+<script type="module" src="js/lost-found.js"></script>
+<script type="module" src="js/session.js"></script>
+<script type="module" src="js/sidebar-role.js"></script>
+
+
+</body>
+</html>

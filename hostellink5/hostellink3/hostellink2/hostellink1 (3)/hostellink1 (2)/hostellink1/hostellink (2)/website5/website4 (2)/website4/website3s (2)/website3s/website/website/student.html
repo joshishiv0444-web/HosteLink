@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>HosteLink | Student</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<button class="menu-toggle" id="menuToggle">☰</button>
+<div class="menu-backdrop" id="menuBackdrop"></div>
+
+<nav class="sidebar" id="sidebar">
+  <h2>HosteLink</h2>
+  <a href="student.html">Dashboard</a>
+  <a href="report-issue.html">Report Issue</a>
+  <a href="published-reports.html">Public Reported issues</a>
+  <a href="my-issues.html">My Issues</a>
+  <a href="announcements.html">Announcements</a>
+  <a href="lost-found.html">Lost & Found</a>
+  <button id="logoutBtn">Logout</button>
+</nav>
+
+<main>
+<h1 class="page-title">Student Dashboard</h1>
+
+  <!-- PRIMARY ACTION -->
+  <div class="glass-card highlight">
+    <h2>Report a Hostel Issue</h2>
+    <p>Facing a problem in your hostel? Report it in under 30 seconds.</p>
+    <a href="report-issue.html" class="primary-btn">Report Issue</a>
+  </div>
+
+ 
+
+  <!-- RECENT ISSUES -->
+  <section class="glass-card">
+    <h2>Recent Issues</h2>
+    <div id="recentIssuesContainer"></div>
+  </section>
+
+
+  <!-- ABOUT -->
+  <section class="glass-card">
+    <h2>About HosteLink</h2>
+    <p>
+      HosteLink is a centralized platform designed to replace
+      informal hostel complaint methods like WhatsApp groups
+      with a transparent, trackable, and accountable system.
+    </p>
+    <p>
+      Students can report issues, track resolution status, and
+      stay informed, while management gains insights into
+      recurring infrastructure problems.
+    </p>
+  </section>
+
+</main>
+
+<script type="module" src="js/guard.js"></script>
+<script type="module" src="js/student.js"></script>
+<script type="module" src="js/session.js"></script>
+
+</body>
+</html>

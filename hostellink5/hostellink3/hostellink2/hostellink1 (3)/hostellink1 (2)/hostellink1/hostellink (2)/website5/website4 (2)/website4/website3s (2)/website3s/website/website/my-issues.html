@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>HosteLink | My Issues</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<button class="menu-toggle" id="menuToggle">☰</button>
+<div class="menu-backdrop" id="menuBackdrop"></div>
+
+<nav class="sidebar" id="sidebar">
+  <h2>HosteLink</h2>
+  <a href="student.html">Dashboard</a>
+  <a href="report-issue.html">Report Issue</a>
+  <a href="my-issues.html">My Issues</a>
+  <a href="announcements.html">Announcements</a>
+  <a href="lost-found.html">Lost & Found</a>
+  <a href="published-reports.html">Published Reports</a>
+  <button id="logoutBtn">Logout</button>
+</nav>
+
+<main>
+  <section class="glass-card">
+  <h2>My Reported Issues</h2>
+  <div id="myIssuesContainer"></div>
+</section>
+
+</main>
+
+<script type="module" src="js/guard.js"></script>
+<script type="module" src="js/student.js"></script>
+<script type="module" src="js/session.js"></script>
+<script type="module" src="js/my-issues.js"></script>
+
+</body>
+</html>

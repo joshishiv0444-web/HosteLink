@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>HosteLink | Report Issue</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<button class="menu-toggle" id="menuToggle">☰</button>
+<div class="menu-backdrop" id="menuBackdrop"></div>
+
+<nav class="sidebar" id="sidebar">
+  <h2>HosteLink</h2>
+  <a href="student.html">Dashboard</a>
+  <a href="my-issues.html">My Issues</a>
+  <a href="published-reports.html">Public reported issues</a>
+  <a href="announcements.html">Announcements</a>
+  <a href="lost-found.html">Lost & Found</a>
+  <a href="published-reports.html">Published Reports</a>
+  <button id="logoutBtn">Logout</button>
+</nav>
+
+<main>
+  <h1>Report Hostel Issue</h1>
+
+  <div class="report-container">
+    <!-- Issue Categories -->
+    <div class="issue-categories">
+	  <div class="category-card">
+	    <h3>🚰 Plumbing</h3>
+	  </div>
+
+	  <div class="category-card">
+	    <h3>⚡ Electrical</h3>
+	  </div>
+
+	  <div class="category-card">
+	    <h3>🧹 Cleanliness</h3>
+	  </div>
+
+	  <div class="category-card">
+	    <h3>📡 Internet</h3>
+	  </div>
+
+	  <div class="category-card">
+	    <h3>🪑 Furniture</h3>
+	  </div>
+
+	  <div class="category-card">
+	    <h3>🚨 Emergency</h3>
+	  </div>
+
+	  <div class="category-card">
+	    <h3>🛡️ Security</h3>
+	  </div>
+
+	  <div class="category-card">
+	    <h3>🍽️ Food</h3>
+	  </div>
+
+	  <div class="category-card">
+	    <h3>📋 Others</h3>
+	  </div>
+    </div>
+
+    <!-- Report Form -->
+    <div class="glass-card report-form">
+      <h2>Report Issue</h2>
+      
+      <div class="form-group">
+        <label>Issue Category</label>
+        <select id="category">
+          <option>Select Category...</option>
+          <option>Plumbing</option>
+          <option>Electrical</option>
+          <option>Cleanliness</option>
+          <option>Internet</option>
+          <option>Furniture</option>
+          <option>Emergency</option>
+          <option>Security</option>
+          <option>Food</option>
+          <option>Others</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Priority Level</label>
+        <select id="priority">
+          <option>Select Priority...</option>
+          <option>Low</option>
+          <option>Medium</option>
+          <option>High</option>
+          <option>Emergency</option>
+        </select>
+      </div>
+<form id="issueForm" method="POST" enctype="multipart/form-data">
+
+
+  <div class="form-group">
+    <label for="description">Description</label>
+    <textarea
+      id="description"
+      name="description"
+      placeholder="Describe the issue in detail..."
+      required
+    ></textarea>
+  </div>
+
+  <!-- LOCATION DETAILS -->
+  <div class="location-grid">
+
+    <div class="field">
+      <label for="hostel">Hostel</label>
+      <input
+        id="hostel"
+        name="hostel"
+        type="text"
+        placeholder="Hostel name / number"
+        required
+      >
+    </div>
+
+    <div class="field">
+      <label for="block">Block</label>
+      <input
+        id="block"
+        name="block"
+        type="text"
+        placeholder="Block (A, B, C...)"
+        required
+      >
+    </div>
+
+    <div class="field">
+      <label for="room">Room / Floor</label>
+      <input
+        id="room"
+        name="room"
+        type="text"
+        placeholder="Room or Floor number"
+        required
+      >
+    </div>
+
+  </div>
+
+  <div class="form-group">
+    <label for="issueImage">Upload Image (optional)</label>
+    <input
+      type="file"
+      id="issueImage"
+      name="image"
+      accept="image/*"
+    >
+  </div>
+
+  <div class="form-group checkbox">
+    <input
+      type="checkbox"
+      id="isPublic"
+      name="is_public"
+    >
+    <label for="isPublic">
+      Make this issue public (visible to other students)
+    </label>
+  </div>
+
+  <!-- 🔥 THIS IS CRITICAL -->
+  <button type="submit" id="submitIssue">
+    Submit Issue
+  </button>
+
+</form>
+
+</main>
+
+<script type="module" src="js/guard.js"></script>
+<script type="module" src="js/student.js"></script>
+<script type="module" src="js/session.js"></script>
+<script type="module" src="js/report.js"></script>
+
+</body>
+</html>

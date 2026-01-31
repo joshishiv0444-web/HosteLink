@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Published Reports</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+
+<button class="menu-toggle" id="menuToggle">☰</button>
+<div class="menu-backdrop" id="menuBackdrop"></div>
+<nav class="sidebar" id="sidebar">
+  <h2>HosteLink</h2>
+
+  <!-- Student only -->
+  <a href="student.html" data-role="student">Dashboard</a>
+  <a href="report-issue.html" data-role="student">Report Issue</a>
+  <a href="my-issues.html" data-role="student">My Issues</a>
+  <a href="lost-found.html" data-role="student">Lost & Found</a>
+  <!-- Shared -->
+  <a href="announcements.html" data-role="student management">Announcements</a>
+
+  <!-- Management only -->
+  <a href="admin.html" data-role="management">Admin Dashboard</a>
+
+  <button id="logoutBtn">Logout</button>
+</nav>
+
+
+<h1 style="text-align:center;">Reported Issues</h1>
+
+<div class="reports-center">
+  <div id="reportsContainer">
+    <!-- Issue cards + comments are injected here by JS -->
+  </div>
+</div>
+
+
+<script type="module" src="js/guard.js"></script>
+<script type="module" src="js/published-reports.js"></script>
+</script>
+<script type="module" src="js/session.js"></script>
+<script type="module" src="js/sidebar-role.js"></script>   <!-- role filter -->
+
+</body>
+</html>

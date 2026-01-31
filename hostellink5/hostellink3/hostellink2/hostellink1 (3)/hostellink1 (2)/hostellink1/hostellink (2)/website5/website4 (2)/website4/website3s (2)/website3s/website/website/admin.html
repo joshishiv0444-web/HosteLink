@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Management Dashboard</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+<!-- MOBILE MENU BUTTON -->
+<button class="menu-toggle" id="menuToggle">☰</button>
+<div class="menu-backdrop" id="menuBackdrop"></div>
+
+<!-- SIDEBAR -->
+<nav class="sidebar" id="sidebar">
+  <h2>HostelLink</h2>
+  <a href="admin.html">Dashboard</a>
+  <a href="announcements.html">Announcements</a>
+  <a href="published-reports.html">Published Reports</a>
+  <button id="logoutBtn">Logout</button>
+</nav>
+
+<!-- MAIN LAYOUT -->
+<div class="layout">
+
+  <!-- MAIN CONTENT -->
+  <main class="content">
+    <h1 class="page-title">Management Dashboard</h1>
+
+    <!-- CATEGORY ANALYTICS -->
+    <div class="glass-card">
+      <h3>Most Reported Issue Categories</h3>
+      <canvas id="categoryChart"></canvas>
+    </div>
+
+ 
+    <!-- ISSUE ANALYTICS PANEL -->
+    <div class="analytics-panel glass-card">
+
+      <!-- LEFT: STATS -->
+      <div class="analytics-left">
+        <h3>Issue Analytics</h3>
+
+        <div class="mini-stats">
+          <div>
+            <span>Total</span>
+            <strong id="totalIssues">0</strong>
+          </div>
+          <div>
+            <span>Pending</span>
+            <strong id="pendingIssues">0</strong>
+          </div>
+          <div>
+            <span>Resolved</span>
+            <strong id="resolvedIssues">0</strong>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: DONUT CHART -->
+      <div class="analytics-right">
+        <canvas id="issueChart"></canvas>
+
+        <div class="chart-legend">
+          <span><i class="dot pending"></i> Pending</span>
+          <span><i class="dot resolved"></i> Resolved</span>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- ALL ISSUES TABLE -->
+    <section class="glass-card">
+      <h2>All Issues</h2>
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Issue</th>
+            <th>Category</th>
+            <th>Location</th>
+            <th>Status</th>
+            <th>Assign To</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+
+        <tbody id="issuesTable">
+          <!-- Rows injected by admin.js -->
+        </tbody>
+      </table>
+    </section>
+
+  </main>
+</div>
+
+<!-- SCRIPTS -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script type="module" src="js/admin.js"></script>
+<script type="module" src="js/session.js"></script>
+<script type="module" src="js/sidebar-role.js"></script>
+
+</body>
+</html>

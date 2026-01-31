@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>HosteLink | Announcements</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <!-- ADMIN ONLY: ADD ANNOUNCEMENT -->
+<div class="glass-card hidden" id="addAnnouncementBox">
+  <h3>Add Announcement</h3>
+
+  <input type="text" id="title" placeholder="Title" />
+  <textarea id="content" placeholder="Announcement details"></textarea>
+
+  <select id="roleTarget">
+    <option value="all">All</option>
+    <option value="student">Students</option>
+    <option value="caretaker">Caretakers</option>
+  </select>
+
+  <button id="postAnnouncement">Post Announcement</button>
+</div>
+
+
+<button class="menu-toggle" id="menuToggle">☰</button>
+<div class="menu-backdrop" id="menuBackdrop"></div>
+
+<nav class="sidebar" id="sidebar">
+  <h2>HosteLink</h2>
+
+  <!-- Student only -->
+  <a href="student.html" data-role="student">Dashboard</a>
+  <a href="report-issue.html" data-role="student">Report Issue</a>
+  <a href="my-issues.html" data-role="student">My Issues</a>
+  <a href="lost-found.html" data-role="student">Lost & Found</a>
+  <!-- Shared -->
+  <a href="published-reports.html" data-role="student management">
+    Published Reports
+  </a>
+
+  <!-- Management only -->
+  <a href="admin.html" data-role="management">Admin Dashboard</a>
+  <a href="announcements.html" data-role="management">Announcements</a>
+
+  <button id="logoutBtn">Logout</button>
+</nav>
+
+
+<main>
+  <h1>Hostel Announcements</h1>
+
+  <div id="announcements" class="announcements-container">
+    <!-- Announcements will be loaded here -->
+  </div>
+</main>
+
+<script type="module" src="js/announcements.js"></script>
+<script type="module" src="js/session.js"></script>
+<script type="module" src="js/sidebar-role.js"></script> 
+
+
+</body>
+</html>
