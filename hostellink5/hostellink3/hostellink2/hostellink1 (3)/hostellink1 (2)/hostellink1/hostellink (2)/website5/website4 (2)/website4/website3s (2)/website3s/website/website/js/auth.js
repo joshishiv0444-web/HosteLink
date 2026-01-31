@@ -64,46 +64,53 @@ if (signupBtn) {
   
 
 /* LOGIN */
+/* LOGIN */
 if (loginBtn) {
   loginBtn.onclick = async () => {
-  const email = emailInput.value.trim();
-  const password = passwordInput.value.trim();
+    const email = emailInput.value.trim();
+    const password = passwordInput.value.trim();
 
-  const { error } = await supabase.auth.signInWithPassword({
-    email,
-    password
-  });
+    if (!email || !password) {
+      alert("Email and password required");
+      return;
+    }
 
-  if (error) {
-    alert(error.message);
-    return;
-  }
+    const { error } = await supabase.auth.signInWithPassword({
+      email,
+      password
+    });
 
-  const { data: auth } = await supabase.auth.getUser();
-  if (!auth?.user) {
-    alert("Auth failed");
-    return;
-  }
+    if (error) {
+      alert(error.message);
+      return;
+    }
 
-  const { data: profile, error: profileError } = await supabase
-  .from("users")
-  .select("role")
-  .eq("id", auth.user.id)
-  .single();
+    // fetch profile (OLD WORKING WAY)
+    const { data: auth } = await supabase.auth.getUser();
+    if (!auth?.user) {
+      alert("Auth failed");
+      return;
+    }
 
-  if (profileError || !profile) {
-    alert("Profile missing. Please contact admin.");
-    return;
-  }
+    const { data: profile, error: profileError } = await supabase
+      .from("users")
+      .select("role")
+      .eq("id", auth.user.id)
+      .single();
 
-  // 🔥 USE profile.role DIRECTLY (NO newProfile)
-  if (profile.role === "management") {
-    window.location.href = "admin.html";
-  } else {
-    window.location.href = "student.html";
-  }
+    if (profileError || !profile) {
+      alert("Profile missing. Please contact admin.");
+      return;
+    }
 
+    if (profile.role === "management") {
+      window.location.href = "admin.html";
+    } else {
+      window.location.href = "student.html";
+    }
+  };
 }
+
 
 
 
@@ -114,6 +121,6 @@ if (loginBtn) {
   // }
 };
 
-}
+
 
 
