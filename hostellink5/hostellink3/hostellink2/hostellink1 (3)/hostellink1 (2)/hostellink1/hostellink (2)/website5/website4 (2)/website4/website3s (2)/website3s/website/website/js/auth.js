@@ -102,7 +102,6 @@ if (loginBtn) {
   await supabase.from("users").insert({
     id: auth.user.id,
     role: "student",
-    name: user.email.split("@")[0]
   });
 
   // reload page once
