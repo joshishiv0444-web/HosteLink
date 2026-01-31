@@ -104,11 +104,11 @@ if (loginBtn) {
       return;
     }
 
-    if (profile.role === "management") {
-      window.location.href = "admin.html";
-    } else {
-      window.location.href = "student.html";
-    }
+    // if (profile.role === "management") {
+    //   window.location.href = "admin.html";
+    // } else {
+    //   window.location.href = "student.html";
+    // }
   };
 }
 
@@ -116,11 +116,11 @@ if (loginBtn) {
 
 
 
-  // if (profile.role === "management") {
-  //   window.location.href = "admin.html";
-  // } else {
-  //   window.location.href = "student.html";
-  // }
+  if (profile.role === "management") {
+    window.location.href = "admin.html";
+  } else {
+    window.location.href = "student.html";
+  }
 };
 
 
