@@ -32,27 +32,27 @@ if (signupBtn) {
     const userId = data.user.id;
 
     // ✅ check profile using id (NOT profile_id)
-    // const { data: existingProfile } = await supabase
-    //   .from("users")
-    //   .select("id")
-    //   .eq("id", userId)
-    //   .maybeSingle();
+    const { data: existingProfile } = await supabase
+      .from("users")
+      .select("id")
+      .eq("id", userId)
+      .maybeSingle();
 
-    // if (!existingProfile) {
-    //   const { error: profileError } = await supabase
-    //     .from("users")
-    //     .insert({
-    //       id: userId,
-    //       name,
-    //       role: "student",
-    //       hostel: "A",
-    //       block: "B",
-    //       room: "101"
-    //     });
+    if (!existingProfile) {
+      const { error: profileError } = await supabase
+        .from("users")
+        .insert({
+          id: userId,
+          name,
+          role: "student",
+          hostel: "A",
+          block: "B",
+          room: "101"
+        });
 
-    //   if (profileError) {
-    //     console.error("Profile insert failed:", profileError);
-    //   }
+      if (profileError) {
+        console.error("Profile insert failed:", profileError);
+      }
     }
 
     alert("Signup successful. Verify email, then login.");
@@ -86,37 +86,23 @@ if (loginBtn) {
   }
 
   const { data: profile, error: profileError } = await supabase
-    .from("users")
-    .select("role")
-    .eq("id", auth.user.id)
-    .maybeSingle();
+  .from("users")
+  .select("role")
+  .eq("id", auth.user.id)
+  .single();
 
-  if (profileError) {
-    console.error(profileError);
-    alert("Profile fetch failed");
+  if (profileError || !profile) {
+    alert("Profile missing. Please contact admin.");
     return;
   }
 
-  if (!profile) {
-  await supabase.from("users").insert({
-    id: auth.user.id,
-    role: "student",
-    name: auth.user.email.split("@")[0]
-  });
-
-  // fetch profile again (NO reload)
-  const { data: newProfile } = await supabase
-    .from("users")
-    .select("role")
-    .eq("id", auth.user.id)
-    .single();
-
-  if (newProfile.role === "management") {
+  // 🔥 USE profile.role DIRECTLY (NO newProfile)
+  if (profile.role === "management") {
     window.location.href = "admin.html";
   } else {
     window.location.href = "student.html";
   }
-  return;
+
 }
 
 
