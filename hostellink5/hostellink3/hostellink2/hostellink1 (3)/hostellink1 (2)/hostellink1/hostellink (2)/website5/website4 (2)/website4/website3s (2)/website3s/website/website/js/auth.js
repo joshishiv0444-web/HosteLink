@@ -1,4 +1,3 @@
-
 import { supabase } from "./supabase.js";
 const nameInput = document.getElementById("name"); // only present on signup page
 const emailInput = document.getElementById("email");
@@ -59,62 +58,49 @@ if (signupBtn) {
     alert("Signup successful. Verify email, then login.");
     window.location.href = "login.html";
   };
-
+}
 
 
   
 
 /* LOGIN */
-/* LOGIN */
-/* LOGIN */
 if (loginBtn) {
   loginBtn.onclick = async () => {
-    const email = emailInput.value.trim();
-    const password = passwordInput.value.trim();
+  const email = emailInput.value.trim();
+  const password = passwordInput.value.trim();
 
-    if (!email || !password) {
-      alert("Email and password required");
-      return;
-    }
+  const { error } = await supabase.auth.signInWithPassword({
+    email,
+    password
+  });
 
-    const { error } = await supabase.auth.signInWithPassword({
-      email,
-      password
-    });
+  if (error) {
+    alert(error.message);
+    return;
+  }
 
-    if (error) {
-      alert(error.message);
-      return;
-    }
+  const { data: auth } = await supabase.auth.getUser();
+  if (!auth?.user) {
+    alert("Auth failed");
+    return;
+  }
 
-    const { data: auth } = await supabase.auth.getUser();
-    if (!auth?.user) {
-      alert("Auth failed");
-      return;
-    }
+  const { data: profile, error: profileError } = await supabase
+    .from("users")
+    .select("role")
+    .eq("id", auth.user.id)
+    .maybeSingle();
 
-    const { data: profile, error: profileError } = await supabase
-      .from("users")
-      .select("role")
-      .eq("id", auth.user.id)
-      .single();
+  if (profileError) {
+    console.error(profileError);
+    alert("Profile fetch failed");
+    return;
+  }
 
-    if (profileError || !profile) {
-      alert("Profile missing. Please contact admin.");
-      return;
-    }
-
-    // if (profile.role === "management") {
-    //   window.location.href = "admin.html";
-    // } else {
-    //   window.location.href = "student.html";
-    // }
-  };
-}
-
-
-
-
+  if (!profile) {
+    alert("Profile missing. Please contact admin.");
+    return;
+  }
 
   if (profile.role === "management") {
     window.location.href = "admin.html";
@@ -123,6 +109,6 @@ if (loginBtn) {
   }
 };
 
-
+}
 
 
