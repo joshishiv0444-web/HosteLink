@@ -98,9 +98,18 @@ if (loginBtn) {
   }
 
   if (!profile) {
-    alert("Profile missing. Please contact admin.");
-    return;
-  }
+  // auto-create profile
+  await supabase.from("users").insert({
+    id: user.id,
+    role: "student",
+    name: user.email.split("@")[0]
+  });
+
+  // reload page once
+  location.reload();
+  return;
+}
+
 
   if (profile.role === "management") {
     window.location.href = "admin.html";
