@@ -1,3 +1,4 @@
+alert("auth js loading");
 import { supabase } from "./supabase.js";
 const nameInput = document.getElementById("name"); // only present on signup page
 const emailInput = document.getElementById("email");
@@ -67,6 +68,7 @@ if (signupBtn) {
 /* LOGIN */
 if (loginBtn) {
   loginBtn.onclick = async () => {
+    alert("login clicked");
     const email = emailInput.value.trim();
     const password = passwordInput.value.trim();
 
