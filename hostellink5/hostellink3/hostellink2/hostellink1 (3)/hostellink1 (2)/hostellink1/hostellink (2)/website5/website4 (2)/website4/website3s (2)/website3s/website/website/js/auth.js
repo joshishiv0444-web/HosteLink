@@ -100,7 +100,7 @@ if (loginBtn) {
   if (!profile) {
   // auto-create profile
   await supabase.from("users").insert({
-    id: user.id,
+    id: auth.user.id,
     role: "student",
     name: user.email.split("@")[0]
   });
