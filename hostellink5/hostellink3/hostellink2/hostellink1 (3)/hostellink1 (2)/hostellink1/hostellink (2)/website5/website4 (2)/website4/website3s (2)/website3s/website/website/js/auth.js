@@ -1,4 +1,4 @@
-alert("auth js loading");
+
 import { supabase } from "./supabase.js";
 const nameInput = document.getElementById("name"); // only present on signup page
 const emailInput = document.getElementById("email");
@@ -66,9 +66,9 @@ if (signupBtn) {
 
 /* LOGIN */
 /* LOGIN */
+/* LOGIN */
 if (loginBtn) {
   loginBtn.onclick = async () => {
-    alert("login clicked");
     const email = emailInput.value.trim();
     const password = passwordInput.value.trim();
 
@@ -87,7 +87,6 @@ if (loginBtn) {
       return;
     }
 
-    // fetch profile (OLD WORKING WAY)
     const { data: auth } = await supabase.auth.getUser();
     if (!auth?.user) {
       alert("Auth failed");
@@ -112,6 +111,7 @@ if (loginBtn) {
     }
   };
 }
+
 
 
 
